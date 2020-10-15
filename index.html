@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Una storia su Rust e WebAssembly</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/foundation.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+			.reveal .slides {
+				word-break: break-word;
+				text-align: left;
+			}
+			.reveal .slides .center {
+				text-align: center;
+			}
+			.reveal section * {
+				font-weight: 800;
+			}
+			.list-none li {
+				list-style-type: none;
+			}
+			.list-plus {
+				list-style-type: '+ ';
+			}
+			.list-minus {
+				list-style-type: '- ';
+			}
+			.reveal section img {
+				border: none;
+				box-shadow: none;
+			}
+			.reveal section.wall img {
+				margin: 0;
+			}
+			.footer {
+				height: 10%;
+				width: 100%;
+				position: absolute;
+				bottom: 40px;
+				display: block;
+				text-align: center;
+			}
+			#hashtag {
+				font-size: 0.8em;
+				font-weight: 400;
+			}
+			.selected {
+				background-color: #000;
+				color: #fff;
+			}
+			.small {
+				font-size: 0.6em;
+			}
+			.reveal pre {
+				font-size: 0.8em;
+			}
+			.reveal pre.noborder {
+				border: none;
+			}
+			.reveal h2.upper {
+				text-transform: uppercase;
+			}
+			@media print {
+				.no-print { display: none; }
+			}
+			@media screen {
+				.only-print { display: none; }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Una storia su Rust e WebAssembly</h2>
+					<br /><br />
+					<h3>Riccardo Magliocchetti</h3>
+				</section>
+				<section>
+					<h2>whoami</h2>
+					<p>Software developer @ Maieutical Labs</p>
+					<p>Consulente</p>
+					<p><a href="http://torino.hacknight.it">Torino Hacknight</a> @tohacknight</p>
+				</section>
+				<section>
+					<h2>Una storia su Rust e WebAssembly</h2>
+					<p>Oggi vediamo:</p>
+					<ul>
+						<li>WebAssembly</li>
+						<li>Rust</li>
+						<li>Un caso d'uso</li>
+					</ul>
+				</section>
+				<section>
+					<h2 class="upper">WebAssembly</h2>
+				</section>
+				<section>
+					<p>WebAssembly è un formato binario portabile, progettato come target di compilazione.</p>
+					<p><a href="https://webassembly.org">webassembly.org</a></p>
+				</section>
+				<section>
+					<p>WebAssembly è un formato binario <span class="selected">portabile</span>, progettato come target di compilazione.</p>
+				</section>
+				<section>
+					<p>WebAssembly è un formato binario portabile, <span class="selected">progettato come target di compilazione</span>.</p>
+				</section>
+				<section>
+					<h2>Funzionante ma WIP</h2>
+					<ul>
+						<li>Integrazione BigInt / interi 64 bit WASM, no Webkit</li>
+						<li>SIMD, non abilitato per default</li>
+						<li>Threads e operazioni atomiche, no Webkit</li>
+						<li>WASI, sperimentale ma usabile in diversi runtime</li>
+					</ul>
+					<p>Aggiornamenti: <a href="https://webassembly.org/roadmap/">webassembly.org/roadmap</a></p>
+				</section>
+				<section>
+					<h2>Caratteristiche principali</h2>
+					<ul>
+						<li>Veloce</li>
+						<li>Sicuro</li>
+						<li><em>Compute only</em></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Dove posso usarlo</h2>
+					<ul>
+						<li>Maggiori browser, <a href="https://caniuse.com/wasm">caniuse.com ~93%</a></li>
+						<li>Runtime JS: <a href="https://nodejs.org">Node.js</a>, <a href="https://deno.land">Deno</a></li>
+						<li>Runtime WASM: <a href="https://wasmtime.dev">wasmtime</a>, <a href="https://wasmer.io">wasmer</a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>In che linguaggi posso scrivere</h2>
+					<ul>
+						<li>C/C++, <a href="https://emscripten.org">Emscripten</a></li>
+						<li><a href="https://rust-lang.org">Rust</a>, <a href="https://rustwasm.github.io">Working Group</a></li>
+						<li><a href="https://www.assemblyscript.org">AssemblyScript</a></li>
+						<li>C#, <a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor">Blazor</a></li>
+						<li>Varie ed eventuali</a>
+					</ul>
+				</section>
+                                <section>
+                                        <h2>Perché WebAssembly?</h2>
+                                        <ul>
+                                                <li>Porting di applicazioni desktop su Web</li>
+                                                <li>Riuso di codice in JavaScript</li>
+                                                <li>Un runtime per tanti linguaggi</li>
+                                        </ul>
+                                </section>
+				<section>
+					<h2 class="upper">Rust</h2>
+				</section>
+                                <section>
+                                        <h2>Rust</h2>
+                                        <ul>
+                                                <li>Veloce, prestazioni simili a C/C++</li>
+                                                <li>Affidabile</li>
+                                                <li>Ricco ecosistema</li>
+                                        </ul>
+                                </section>
+                                <section>
+                                        <h2>Applicazioni</h2>
+                                        <ul>
+                                                <li>Programmazione di sistema</li>
+                                                <li>Programmazione embedded</li>
+						<li>Integrazioni con altri linguaggi
+							<ul>
+								<li>C, <a href="https://github.com/lu-zero/cargo-c">cargo-c</a></li>
+								<li>Python, <a href="https://pyo3.rs">PyO3</a></li>
+								<li>WebAssembly :)</li>
+							</ul>
+						</li>
+                                        </ul>
+                                </section>
+                                <section>
+                                        <h2>Come lo imparo?</h2>
+                                        <ul>
+						<li><a href="https://www.rust-lang.org/learn">Libro ufficiale</a></li>
+						<li><a href="https://community.mozilla.org/en/groups/rust-italia/ ">Meetup Italiani</a></li>
+                                        </ul>
+                                </section>
+				<section>
+					<h2>Caso d'uso</h2>
+					<p>Implementare un sistema di spell checking in una applicazione web usando <a href="https://github.com/wolfgarbe/SymSpell">SymSpell</a></p>
+				</section>
+				<section>
+					<h2>Problemi</h2>
+                                        <ul>
+						<li>Applicazione <em>CPU intensive</em></li>
+						<li>Implementazione JS non disponibili</li>
+                                        </ul>
+				</section>
+				<section>
+					<h2>Soluzione</h2>
+					<p>Portare l'<a href="https://github.com/reneklacan/symspell">implementazione Rust</a> a WebAssembly!</p>
+				</section>
+				<section>
+					<h2>Il software libero<br>non si scrive da solo!</h2>
+                                        <ul>
+						<li>Porting ottimizzato a WebAssembly</li>
+						<li>Aggiunta funzionalità</li>
+                                        </ul>
+					<p>Dettagli tecnici <a href="https://www.rustlab.it/agenda/session/330910">talk</a> Nicola Martino a Rustlab 2020</p>
+				</section>
+				<section>
+					<h2>Grazie! Domande?</h2>
+					<p></p>
+					<p><a href="https://github.com/xrmx">github.com/xrmx</a></p>
+					<p><a href="https://speakerdeck.com/xrmx">speakerdeck.com/xrmx</a></p>
+					<p class="only-print"><a href="https://twitter.com/rmistaken">@rmistaken</a></p>
+				</section>
+			</div>
+			<div class="footer">
+				<p id="hashtag" class="no-print">#LinuxDayOnline ‧ @rmistaken</p>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
