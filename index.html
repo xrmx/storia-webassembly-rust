@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Una storia su Rust e WebAssembly</title>
+		<title>Avoiding spelling mistakes: a WebAssembly tale</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css">
@@ -88,80 +88,80 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>Una storia su Rust e WebAssembly</h2>
+					<h2>Avoiding spelling mistakes:<br> a WebAssembly tale</h2>
 					<br /><br />
 					<h3>Riccardo Magliocchetti</h3>
 				</section>
 				<section>
 					<h2>whoami</h2>
 					<p>Software developer @ Maieutical Labs</p>
-					<p>Consulente</p>
-					<p><a href="http://torino.hacknight.it">Torino Hacknight</a> @tohacknight</p>
+					<p>Consultant</p>
+					<p><a href="http://torino.hacknight.it">Torino Hacknight</a> <a href="https://twitter.com/tohacknight">@tohacknight</a></p>
 				</section>
 				<section>
-					<h2>Una storia su Rust e WebAssembly</h2>
-					<p>Oggi vediamo:</p>
+					<h2>Avoiding spelling mistakes:<br> a WebAssembly tale</h2>
+					<p>Agenda:</p>
 					<ul>
 						<li>WebAssembly</li>
 						<li>Rust</li>
-						<li>Un caso d'uso</li>
+						<li>A real-world use case</li>
 					</ul>
 				</section>
 				<section>
 					<h2 class="upper">WebAssembly</h2>
 				</section>
 				<section>
-					<p>WebAssembly è un formato binario portabile, progettato come target di compilazione.</p>
+					<p>WebAssembly is a portable binary format, developed as compilation target.</p>
 					<p><a href="https://webassembly.org">webassembly.org</a></p>
 				</section>
 				<section>
-					<p>WebAssembly è un formato binario <span class="selected">portabile</span>, progettato come target di compilazione.</p>
+					<p>WebAssembly is a <span class="selected">portable</span> binary format, developed as compilation target.</p>
 				</section>
 				<section>
-					<p>WebAssembly è un formato binario portabile, <span class="selected">progettato come target di compilazione</span>.</p>
+					<p>WebAssembly is a portable binary format, <span class="selected">developed as compilation target</span>.</p>
 				</section>
 				<section>
-					<h2>Funzionante ma WIP</h2>
+					<h2>Working but still WIP</h2>
 					<ul>
-						<li>Integrazione BigInt / interi 64 bit WASM, no Webkit</li>
-						<li>SIMD, non abilitato per default</li>
-						<li>Threads e operazioni atomiche, no Webkit</li>
-						<li>WASI, sperimentale ma usabile in diversi runtime</li>
+						<li>JS BigInt and 64 bit WASM Integer integration, no Webkit</li>
+						<li><em>SIMD</em>, not enabled by default</li>
+						<li>Threads and atomic operations, no Webkit</li>
+						<li><a href="https://wasi.dev/">WASI</a>, still experimental</li>
 					</ul>
-					<p>Aggiornamenti: <a href="https://webassembly.org/roadmap/">webassembly.org/roadmap</a></p>
+					<p>Source: <a href="https://webassembly.org/roadmap/">webassembly.org/roadmap</a></p>
 				</section>
 				<section>
-					<h2>Caratteristiche principali</h2>
+					<h2>Main features</h2>
 					<ul>
-						<li>Veloce</li>
-						<li>Sicuro</li>
-						<li><em>Compute only</em></li>
-					</ul>
-				</section>
-				<section>
-					<h2>Dove posso usarlo</h2>
-					<ul>
-						<li>Maggiori browser, <a href="https://caniuse.com/wasm">caniuse.com ~93%</a></li>
-						<li>Runtime JS: <a href="https://nodejs.org">Node.js</a>, <a href="https://deno.land">Deno</a></li>
-						<li>Runtime WASM: <a href="https://wasmtime.dev">wasmtime</a>, <a href="https://wasmer.io">wasmer</a></li>
+						<li>Fast</li>
+						<li>Safe</li>
+						<li>Compute only</li>
 					</ul>
 				</section>
 				<section>
-					<h2>In che linguaggi posso scrivere</h2>
+					<h2>WASM targets</h2>
 					<ul>
-						<li>C/C++, <a href="https://emscripten.org">Emscripten</a></li>
-						<li><a href="https://rust-lang.org">Rust</a>, <a href="https://rustwasm.github.io">Working Group</a></li>
+						<li>Browsers: <a href="https://caniuse.com/wasm">93% users</a>, <a href="https://developer.mozilla.org/en-US/docs/WebAssembly">WebAssembly MDN docs</a></li>
+						<li>JS Runtime: <a href="https://nodejs.org">Node.js</a>, <a href="https://deno.land">Deno</a></li>
+						<li>WASM Runtime: <a href="https://wasmtime.dev">wasmtime</a>, <a href="https://wasmer.io">wasmer</a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Programming Languages</h2>
+					<ul>
+						<li>C/C++: <a href="https://emscripten.org">Emscripten</a></li>
+						<li><a href="https://rust-lang.org">Rust</a>: <a href="https://rustwasm.github.io"><del>Working Group</del></a></li>
 						<li><a href="https://www.assemblyscript.org">AssemblyScript</a></li>
-						<li>C#, <a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor">Blazor</a></li>
-						<li>Varie ed eventuali</a>
+						<li>C#: <a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor">Blazor</a></li>
+						<li>Other</li>
 					</ul>
 				</section>
                                 <section>
-                                        <h2>Perché WebAssembly?</h2>
+                                        <h2>Why WebAssembly?</h2>
                                         <ul>
-                                                <li>Porting di applicazioni desktop su Web</li>
-                                                <li>Riuso di codice in JavaScript</li>
-                                                <li>Un runtime per tanti linguaggi</li>
+						<li>Applications porting to the Web, e.g. <a href="https://github.com/iodide-project/pyodide">Pyodide</a></li>
+                                                <li>Reuse code in JavaScript</li>
+                                                <li>One runtime for many languages</li>
                                         </ul>
                                 </section>
 				<section>
@@ -170,17 +170,17 @@
                                 <section>
                                         <h2>Rust</h2>
                                         <ul>
-                                                <li>Veloce, prestazioni simili a C/C++</li>
-                                                <li>Affidabile</li>
-                                                <li>Ricco ecosistema</li>
+                                                <li>Fast</li>
+                                                <li>Reliable</li>
+                                                <li>Rich ecosystem</li>
                                         </ul>
                                 </section>
                                 <section>
-                                        <h2>Applicazioni</h2>
+                                        <h2>Uses of Rust</h2>
                                         <ul>
-                                                <li>Programmazione di sistema</li>
-                                                <li>Programmazione embedded</li>
-						<li>Integrazioni con altri linguaggi
+                                                <li>Systems programming</li>
+                                                <li>Embedded</li>
+						<li>Good integrations with other languages:
 							<ul>
 								<li>C, <a href="https://github.com/lu-zero/cargo-c">cargo-c</a></li>
 								<li>Python, <a href="https://pyo3.rs">PyO3</a></li>
@@ -190,37 +190,37 @@
                                         </ul>
                                 </section>
                                 <section>
-                                        <h2>Come lo imparo?</h2>
+                                        <h2>How to learn Rust?</h2>
                                         <ul>
-						<li><a href="https://www.rust-lang.org/learn">Libro ufficiale</a></li>
-						<li><a href="https://community.mozilla.org/en/groups/rust-italia/ ">Meetup Italiani</a></li>
+						<li><a href="https://www.rust-lang.org/learn">The book</a></li>
+						<li><a href="https://community.mozilla.org/en/groups/rust-italia/ ">Italian meetups</a></li>
                                         </ul>
                                 </section>
 				<section>
-					<h2>Caso d'uso</h2>
-					<p>Implementare un sistema di spell checking in una applicazione web usando <a href="https://github.com/wolfgarbe/SymSpell">SymSpell</a></p>
+					<h2>A use case</h2>
+					<p>Add spell checking to a web application using <a href="https://github.com/wolfgarbe/SymSpell">SymSpell</a></p>
 				</section>
 				<section>
-					<h2>Problemi</h2>
+					<h2>Problems</h2>
                                         <ul>
-						<li>Applicazione <em>CPU intensive</em></li>
-						<li>Implementazione JS non disponibili</li>
+						<li><em>CPU intensive</em></li>
+						<li>No available JS implementation</li>
                                         </ul>
 				</section>
 				<section>
-					<h2>Soluzione</h2>
-					<p>Portare l'<a href="https://github.com/reneklacan/symspell">implementazione Rust</a> a WebAssembly!</p>
+					<h2>Solution</h2>
+					<p>Porting the <a href="https://github.com/reneklacan/symspell">Rust implementation</a> to WebAssembly!</p>
 				</section>
 				<section>
-					<h2>Il software libero<br>non si scrive da solo!</h2>
+					<h2>Our contributions</h2>
                                         <ul>
-						<li>Porting ottimizzato a WebAssembly</li>
-						<li>Aggiunta funzionalità</li>
+						<li>Optimized WebAssembly porting</li>
+						<li>More features</li>
                                         </ul>
-					<p>Dettagli tecnici <a href="https://www.rustlab.it/agenda/session/330910">talk</a> Nicola Martino a Rustlab 2020</p>
+					<p>Tech details: Nicola Martino <a href="https://www.rustlab.it/agenda/session/330910">talk</a> at Rustlab 2020</p>
 				</section>
 				<section>
-					<h2>Grazie! Domande?</h2>
+					<h2>That's all folks! Any question?</h2>
 					<p></p>
 					<p><a href="https://github.com/xrmx">github.com/xrmx</a></p>
 					<p><a href="https://speakerdeck.com/xrmx">speakerdeck.com/xrmx</a></p>
@@ -228,7 +228,7 @@
 				</section>
 			</div>
 			<div class="footer">
-				<p id="hashtag" class="no-print">#LinuxDayOnline ‧ @rmistaken</p>
+				<p id="hashtag" class="no-print">#SFScon20 ‧ @rmistaken</p>
 			</div>
 		</div>
 
